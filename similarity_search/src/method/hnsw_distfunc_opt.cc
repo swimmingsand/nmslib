@@ -46,7 +46,7 @@
 #define USE_AVX
 #endif
 
-//#define DIST_CALC
+#define DIST_CALC
 namespace similarity {
     float
     L2SqrSIMD16Ext(const float *pVect1, const float *pVect2, size_t &qty, float *TmpRes)
@@ -406,7 +406,7 @@ namespace similarity {
                     _mm_prefetch(data_level0_memory_ + (*(data + j)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 }
 #ifdef DIST_CALC
-                query->distance_computations_ += size;
+                query->AddDistanceComputations(size);
 #endif
 
                 for (int j = 1; j <= size; j++) {
@@ -458,7 +458,7 @@ namespace similarity {
                 _mm_prefetch(data_level0_memory_ + (*(data + j + 1)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 if (!(massVisited[tnum] == currentV)) {
 #ifdef DIST_CALC
-                    query->distance_computations_++;
+                    query->AddDistanceComputations(1);
 #endif
                     massVisited[tnum] = currentV;
                     char *currObj1 = (data_level0_memory_ + tnum * memoryPerObject_ + offsetData_);
@@ -508,7 +508,7 @@ namespace similarity {
                     _mm_prefetch(data_level0_memory_ + (*(data + j)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 }
 #ifdef DIST_CALC
-                query->distance_computations_ += size;
+                query->AddDistanceComputations(size);
 #endif
 
                 for (int j = 1; j <= size; j++) {
@@ -559,7 +559,7 @@ namespace similarity {
                 _mm_prefetch(data_level0_memory_ + (*(data + j + 1)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 if (!(massVisited[tnum] == currentV)) {
 #ifdef DIST_CALC
-                    query->distance_computations_++;
+                    query->AddDistanceComputations(1);
 #endif
                     massVisited[tnum] = currentV;
                     char *currObj1 = (data_level0_memory_ + tnum * memoryPerObject_ + offsetData_);
@@ -650,7 +650,7 @@ namespace similarity {
                     _mm_prefetch(data_level0_memory_ + (*(data + j)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 }
 #ifdef DIST_CALC
-                query->distance_computations_ += size;
+                query->AddDistanceComputations(size);
 #endif
 
                 for (int j = 1; j <= size; j++) {
@@ -702,7 +702,7 @@ namespace similarity {
                 _mm_prefetch(data_level0_memory_ + (*(data + j + 1)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 if (!(massVisited[tnum] == currentV)) {
 #ifdef DIST_CALC
-                    query->distance_computations_++;
+                    query->AddDistanceComputations(1);
 #endif
                     massVisited[tnum] = currentV;
                     char *currObj1 = (data_level0_memory_ + tnum * memoryPerObject_ + offsetData_);
@@ -764,7 +764,7 @@ namespace similarity {
                     _mm_prefetch(data_level0_memory_ + (*(data + j)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 }
 #ifdef DIST_CALC
-                query->distance_computations_ += size;
+                query->AddDistanceComputations(size);
 #endif
 
                 for (int j = 1; j <= size; j++) {
@@ -815,7 +815,7 @@ namespace similarity {
                 _mm_prefetch(data_level0_memory_ + (*(data + j + 1)) * memoryPerObject_ + offsetData_, _MM_HINT_T0);
                 if (!(massVisited[tnum] == currentV)) {
 #ifdef DIST_CALC
-                    query->distance_computations_++;
+                    query->AddDistanceComputations(1);
 #endif
                     massVisited[tnum] = currentV;
                     char *currObj1 = (data_level0_memory_ + tnum * memoryPerObject_ + offsetData_);
